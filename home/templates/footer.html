@@ -1,0 +1,142 @@
+{% load static %}
+<!-- FOOTER -->
+<footer id="footer" class="section section-grey">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- footer widget -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <!-- footer logo -->
+          <div class="footer-logo">
+            <a class="logo" href="{% url 'home' %}">
+              <img
+                src="{% static '' %}img/cow.png"
+                style="height: 200px"
+                alt=""
+              />
+            </a>
+          </div>
+          <!-- /footer logo -->
+          <h4>Welcome to Devi's Collections<br /></h4>
+
+          <!-- footer social -->
+          <ul class="footer-social">
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/devivek_collections/?utm_medium=copy_link"
+                ><i class="fa fa-instagram"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-pinterest"></i></a>
+            </li>
+          </ul>
+          <!-- /footer social -->
+        </div>
+      </div>
+      <!-- /footer widget -->
+
+      <!-- footer widget -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <h3 class="footer-header">My Account</h3>
+          <ul class="list-links">
+            <li><a href="{% url 'user_index' %}">My Account</a></li>
+            <li><a href="{% url 'user_orders' %}">My Orders</a></li>
+            <li><a href="{% url 'user_comments' %}">My Comments</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /footer widget -->
+
+      <div class="clearfix visible-sm visible-xs"></div>
+
+      <!-- footer widget -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <h3 class="footer-header">Customer Service</h3>
+          <ul class="list-links">
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li><a href="#">Shiping & Return</a></li>
+            <li><a href="#">Shiping Guide</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /footer widget -->
+
+      <!-- footer subscribe -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <h3 class="footer-header">Stay Connected</h3>
+          <p>
+            For More details contact us on<br />
+            <a
+              class="fas fa-phone pr-2"
+              href=" https://wa.me/8680872852?text=I%20have%20come%20across%20your%20website%20much%20intrested%20to%20have%20a%20chat%20with%20you"
+              >8680872058
+            </a>
+            <br />
+            Feel free to mail us on
+            <a class="fas fa-envelope pr-2" href="mailto:devivek17@gmail.com"
+              >devivek17@gmail.com</a
+            >
+          </p>
+          {% comment %}
+          <form>
+            <div class="form-group">
+              <input class="input" placeholder="Enter Email Address" />
+            </div>
+            <button class="primary-btn">Join Newslatter</button>
+          </form>
+          {% endcomment %}
+        </div>
+      </div>
+      <!-- /footer subscribe -->
+    </div>
+    <!-- /row -->
+    <hr />
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <!-- footer copyright -->
+        <div class="footer-copyright">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | This template is made with
+          <i class="fa fa-heart-o" aria-hidden="true"></i> by
+          <a href="{% url 'home' %}" target="_blank">Colorlib</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </div>
+        <!-- /footer copyright -->
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</footer>
+<!-- /FOOTER -->
+
+<!-- jQuery Plugins -->
+
+<script src="{% static '' %}js/bootstrap.min.js"></script>
+<script src="{% static '' %}js/slick.min.js"></script>
+<script src="{% static '' %}js/nouislider.min.js"></script>
+<script src="{% static '' %}js/jquery.zoom.min.js"></script>
+<script src="{% static '' %}js/main.js"></script>
