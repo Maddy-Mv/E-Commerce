@@ -17,37 +17,42 @@ from user.models import UserProfile
 @login_required(login_url='/login') # Check login
 def index(request):
     #category = Category.objects.all()
-    current_user = request.user  # Access User Session information
-    profile = UserProfile.objects.get(user_id=current_user.id)
-    context = {#'category': category,
-               'profile':profile}
-    return render(request,'user_profile.html',context)
+    try:
+        current_user = request.user
+        profile = UserProfile.objects.get(user_id=current_user.id)
+        context = {'profile':profile}
+        return render(request,'user_profile.html',context)
+    except UserProfile.DoesNotExist:
+        messages.warning(request,"User Profile not found")
+        return HttpResponseRedirect('/login')
 
 def login_form(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            current_user =request.user
-            userprofile=UserProfile.objects.get(user_id=current_user.id)
-            request.session['userimage'] = userprofile.image.url
-            #*** Multi Langugae
-            request.session[translation.LANGUAGE_SESSION_KEY] = userprofile.language.code
-            request.session['currency'] = userprofile.currency.code
-            translation.activate(userprofile.language.code)
+        try:
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                current_user =request.user
+                userprofile=UserProfile.objects.get(user_id=current_user.id)
+                request.session['userimage'] = userprofile.image.url
+                request.session[translation.LANGUAGE_SESSION_KEY] = userprofile.language.code
+                request.session['currency'] = userprofile.currency.code
+                translation.activate(userprofile.language.code)
+                return HttpResponseRedirect('/'+userprofile.language.code)
+            else:
+                messages.warning(request,"Login Error !! Username or Password is incorrect")
+                return HttpResponseRedirect('/login')
 
-            # Redirect to a success page.
-            return HttpResponseRedirect('/'+userprofile.language.code)
-        else:
-            messages.warning(request,"Login Error !! Username or Password is incorrect")
+        except Exception as e:
+            messages.warning(request,"Invalid User please signup")
             return HttpResponseRedirect('/login')
     # Return an 'invalid login' error message.
 
     #category = Category.objects.all()
-    context = {#'category': category
-     }
+    context = {}
     return render(request, 'login_form.html',context)
 
 def logout_func(request):

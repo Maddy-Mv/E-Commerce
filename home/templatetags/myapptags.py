@@ -16,8 +16,12 @@ def categorylist():
 
 @register.simple_tag
 def shopcartcount(userid):
-    count = ShopCart.objects.filter(user_id=userid).count()
-    return count
+    if userid:
+        count = ShopCart.objects.filter(user_id=userid).count()
+        print("#####################",userid)
+        return count
+    else:
+        return 0
 
 # views-> "category =  categoryTree(0,'','tr')"  html-> "ategoryTree 0 '' LANGUAGE_CODE as category"
 @register.simple_tag
